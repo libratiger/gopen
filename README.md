@@ -2,7 +2,7 @@
 
 [中文版本](README_zh.md)
 
-`gopen` is a command-line tool designed to open the remote URL of a Git repository in your browser. This tool simplifies the workflow for developers switching between multiple repositories, supporting the selection of remote URLs through an interactive mode and searching for remote URLs in a specified directory.
+`gopen` is a command-line tool designed to open the remote URL of a Git repository in your browser like macOS `open` command.
 
 ## Features
 
@@ -74,4 +74,4 @@ Issues, feature requests, and pull requests are welcome. Please visit the [GitHu
 
 ## License
 
-`gopen` is licensed under the MIT License. For details, please refer to the [LICENSE](LICENSE) file.
+`gopen` is licensed under the MIT License. 

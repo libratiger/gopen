@@ -2,7 +2,7 @@
 
 [English Version](README.md)
 
-`gopen` 是一个命令行工具，用于在浏览器中打开 Git 仓库的远程 URL。这个工具简化了开发者在多个仓库之间切换时的工作流程，支持通过交互模式选择远程 URL 以及从指定目录中查找远程 URL。
+`gopen` 是一个命令行工具，用于在浏览器中打开 Git 仓库的远程 URL, 像MacOS内置的`open`命令。
 
 ## 功能
 
@@ -74,4 +74,4 @@ gopen /path/to/git-repo -i
 
 ## 许可证
 
-`gopen` 使用 MIT 许可证。详情请参阅 [LICENSE](LICENSE) 文件。
+`gopen` 使用 MIT 许可证。
