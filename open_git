@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# 设置默认目录为当前目录
+directory="."
+
+# 检查是否输入了目录路径
+if [ -n "$1" ] && [ "$1" != "-i" ]; then
+  directory="$1"
+fi
+
+# 检查目录是否存在
+if [ ! -d "$directory" ]; then
+  echo "目录不存在: $directory"
+  exit 1
+fi
+
+# 获取所有 remote URL
+remote_urls=$(git -C "$directory" remote -v | awk '/fetch/ {print $2}')
+
+# 检查是否成功获取 remote URL
+if [ -z "$remote_urls" ]; then
+  echo "未找到 remote URL，请确保在 Git 仓库中运行该脚本。"
+  exit 1
+fi
+
+# 检查用户是否输入了 -i 参数
+interactive=false
+if [ "$2" == "-i" ] || [ "$1" == "-i" ]; then
+  interactive=true
+fi
+
+# 如果是交互模式，显示选择界面
+if $interactive; then
+  PS3="请选择一个 remote URL: "
+  select remote_url in $remote_urls; do
+    if [ -n "$remote_url" ]; then
+      break
+    else
+      echo "无效选择，请重试。"
+    fi
+  done
+else
+  # 默认选择第一个 remote URL
+  remote_url=$(echo "$remote_urls" | head -n 1)
+fi
+
+# 如果是 SSH URL，转换为 HTTPS URL
+if [[ "$remote_url" == git@* ]]; then
+  remote_url=$(echo "$remote_url" | sed -E 's#git@([^:]+):#https://\1/#')
+elif [[ "$remote_url" == ssh://git@* ]]; then
+  remote_url=$(echo "$remote_url" | sed -E 's#ssh://git@([^/]+)#https://\1#')
+fi
+
+# 在浏览器中打开 remote URL
+open "$remote_url"
+
+
+
+
