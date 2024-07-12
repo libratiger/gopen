@@ -1,7 +1,12 @@
 [package]
 name = "gopen"
-version = "0.1.0"
+version = "1.1.0"
 edition = "2021"
+authors = ["libratiger<info@suinian.ai>"]
+description = "A command-line tool to open Git repository remote URL in your browser"
+license = "MIT"
+repository = "https://github.com/libratiger/gopen"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
